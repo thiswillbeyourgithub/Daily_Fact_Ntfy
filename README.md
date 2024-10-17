@@ -52,7 +52,9 @@ Example:
 ./daily_ntfy_ai_fact.sh 3600 7200 "Psychiatry"
 ```
 
-This will wait between 1 to 2 hours before sending an AI-generated fact about psychiatry.
+This will wait between 1 to 2 hours before sending an AI-generated fact about psychiatry:
+
+* > Did you know that the first comprehensive textbook on psychiatry was published in 1845 by Dr. Thomas Kirkbride? Titled "An Introduction to the Study of Insanity," this influential book laid the groundwork for modern psychiatric research and practice.`
 
 Example with custom LLM arguments:
 ```
