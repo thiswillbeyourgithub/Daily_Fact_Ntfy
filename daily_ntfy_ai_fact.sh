@@ -58,7 +58,7 @@ else
 fi
 
 cleaned=$(echo $fact | sed -z 's/<thinking>.*<\/thinking>\s\+//g')
-cleaned="Your daily fact on the topic of '"$topic"':\r$cleaned"
+cleaned=$(printf "Your daily fact on the topic of '%s':\n%s" "$topic" "$cleaned")
 
 phone_notif "Daily Psychiatry Fact" "$cleaned"
 
