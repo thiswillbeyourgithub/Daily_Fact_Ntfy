@@ -13,6 +13,8 @@
 #   - Z: the topic you're interested in
 #   - W: (optional) custom arguments for the llm command (e.g. "-m gpt-4 -o temperature 0.7")
 
+PROMPT="I want you to tell me an interesting fact about a topic. It needs to always be true. It can be something interesting, insightful, little known, intriguing, etc. The topic of today is"
+
 phone_notif () {
     sender=$NTFY_PHONE
     title="$1"
@@ -52,9 +54,9 @@ tosleep=$(echo $((RANDOM % ($max-$min+1) + $min)))
 sleep $tosleep
 
 if [[ -n "$llm_args" ]]; then
-    fact=$(llm "${llm_args[@]}" "I want you to tell me an interesting fact about a topic. It needs to always be true. It can be something interesting, insightful, little known, intriguing, etc. The topic of today is $topic")
+    fact=$(llm "${llm_args[@]}" "$PROMPT $topic")
 else
-    fact=$(llm "I want you to tell me an interesting fact about a topic. It needs to always be true. It can be something interesting, insightful, little known, intriguing, etc. The topic of today is $topic")
+    fact=$(llm "$PROMPT $topic")
 fi
 
 cleaned=$(echo $fact | sed -z 's/<thinking>.*<\/thinking>\s\+//g')
