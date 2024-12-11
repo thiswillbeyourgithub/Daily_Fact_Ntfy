@@ -14,15 +14,15 @@ Daily Ntfy AI Fact is a shell script that:
 
 - zsh shell
 - curl
-- uv (for ShellArgParser)
-- An AI language model CLI tool ([llm](https://github.com/simonw/llm))
-- An ntfy.sh topic
+- [uv](https://github.com/astral-sh/uv) (for [ShellArgParser](https://github.com/thiswillbeyourgithub/ShellArgParser))
+- [llm](https://github.com/simonw/llm) (an AI language model CLI tool)
+- An [ntfy.sh](https://ntfy.sh) topic
 
 ## Setup
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/daily-ntfy-ai-fact.git
+   git clone https://github.com/yourusername/daily-ntfy-ai-fact
    cd daily-ntfy-ai-fact
    ```
 
@@ -58,10 +58,10 @@ Example:
 ```
 
 This will:
-1. Generate a subtopic about psychiatry
-2. Create an interesting fact about that subtopic
-3. Wait between 1 to 2 hours
-4. Send the fact as a notification
+1. Generate a subtopic about psychiatry (say 'simulating depression in mice')
+2. Create an interesting fact about that subtopic (the explanation about the subtopic)
+3. Wait between 1 to 2 hours (to be surprised by the notification on your phone)
+4. Send the fact as a notification via ntfy.sh
 
 ## Custom LLM Arguments
 
