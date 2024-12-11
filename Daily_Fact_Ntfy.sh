@@ -115,6 +115,6 @@ tosleep=$(echo $((RANDOM % ($ARGS_MAX_T-$ARGS_MIN_T+1) + $ARGS_MIN_T)))
 log "Sleeping for $tosleep seconds"
 sleep $tosleep
 
-echo "$cleaned"
+# echo "$cleaned"
 log "Sending answer to ntfy at topic \"$ARGS_NTFY_TOPIC\""
-# curl -s -H "Title: Daily Fact Ntfy" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
+curl -s -H "Title: Daily Fact Ntfy" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
