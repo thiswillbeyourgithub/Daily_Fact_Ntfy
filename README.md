@@ -1,10 +1,10 @@
-# Daily Ntfy AI Fact
+# Daily Fact Ntfy
 
 This project sends notifications with AI-generated interesting facts about specified topics using ntfy.sh.
 
 ## Description
 
-Daily Ntfy AI Fact is a shell script that:
+`Daily Fact Ntfy` is a shell script that:
 1. Generates a subtopic about your chosen topic
 2. Creates an interesting fact about that subtopic in the context of your topic using an AI language model
 3. Optionally waits a random amount of time within a specified range
@@ -22,20 +22,20 @@ Daily Ntfy AI Fact is a shell script that:
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/daily-ntfy-ai-fact
-   cd daily-ntfy-ai-fact
+   git clone https://github.com/yourusername/Daily_Fact_Ntfy
+   cd Daily_Fact_Ntfy
    ```
 
 2. Make the script executable:
    ```
-   chmod +x daily_ntfy_ai_fact.sh
+   chmod +x Daily_Fact_Ntfy.sh
    ```
 ## Usage
 
 Basic usage:
 
 ```zsh
-./daily_ntfy_ai_fact.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
+./Daily_Fact_Ntfy.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
 ```
 
 Required arguments:
@@ -54,7 +54,7 @@ Optional arguments:
 
 Example:
 ```bash
-./daily_ntfy_ai_fact.sh --topic "Psychiatry" --ntfy_topic "my-notifications" --min_t 3600 --max_t 7200
+./Daily_Fact_Ntfy.sh --topic "Psychiatry" --ntfy_topic "my-notifications" --min_t 3600 --max_t 7200
 ```
 
 This will:
@@ -68,12 +68,12 @@ This will:
 You can customize the behavior of the AI language model by providing additional arguments through `--topic_extra_args` or `--subtopic_extra_args`. These are passed directly to the `llm` command. For example:
 
 ```bash
-./daily_ntfy_ai_fact.sh --topic "Psychiatry" --ntfy_topic "my-notifications" --topic_extra_args "-m gpt-4 -o temperature 0.7"
+./Daily_Fact_Ntfy.sh --topic "Psychiatry" --ntfy_topic "my-notifications" --topic_extra_args "-m gpt-4 -o temperature 0.7"
 ```
 
 More advanced example using Claude, custom rules, and thinking tags:
 ```bash
-./daily_ntfy_ai_fact.sh --ntfy_topic "my-notifications" \
+./Daily_Fact_Ntfy.sh --ntfy_topic "my-notifications" \
   --topic "Psychiatry research" \
   --min_t 0 --max_t 5 \
   --subtopic_extra_args "-m claude -o temperature 2" \

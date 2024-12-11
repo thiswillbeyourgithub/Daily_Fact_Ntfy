@@ -5,7 +5,7 @@
 # As increasing the temperature was not enough to avoid the LLM sending the same facts over and over again, a seed, date and subtopic prompt is used.
 #
 # Usage: (requires 'uv' for ShellArgParser)
-#   ./daily_ntfy_ai_fact.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
+#   ./Daily_Fact_Ntfy.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
 #
 # Required arguments:
 #   --topic TOPIC          Topic to generate facts about
@@ -77,7 +77,7 @@ fi
 log "Generated subtopic: \"$subtopic\""
 
 if [[ -z "$subtopic" || $subtopic =~ "^Error:.*" ]]; then
-    curl -s -H "Title: Error - Daily AI Fact" -d "Apparently an error happened when generating a subtopic. $subtopic" "ntfy.sh/$ARGS_NTFY_TOPIC"
+    curl -s -H "Title: Error - Daily Fact Ntfy" -d "Apparently an error happened when generating a subtopic. $subtopic" "ntfy.sh/$ARGS_NTFY_TOPIC"
     exit 1
 fi
 
@@ -97,7 +97,7 @@ else
     fact=$(llm "$TOPIC_PROMPT" -s "$TOPIC_SYSPROMPT" -o temperature 1.5)
 fi
 if [[ -z "$fact" || $fact =~ "^Error:.*" ]]; then
-    curl -s -H "Title: Error - Daily AI Fact" -d "Apparently an error happened when generating a fact. $fact" "ntfy.sh/$ARGS_NTFY_TOPIC"
+    curl -s -H "Title: Error - Daily Fact Ntfy" -d "Apparently an error happened when generating a fact. $fact" "ntfy.sh/$ARGS_NTFY_TOPIC"
     exit 1
 fi
 
@@ -106,7 +106,7 @@ if [[ "$ARGS_STRIP_THINKING" -eq 1 ]]; then
     log "Removing thinking tags"
     cleaned=$(echo $fact | sed -z 's/<thinking>.*<\/thinking>\s\+//g')
 fi
-cleaned=$(printf "Your daily fact on the topic of '%s':\n%s" "$ARGS_TOPIC" "$cleaned")
+cleaned=$(printf "Your daily Fact Ntfy on the topic of '%s':\n%s" "$ARGS_TOPIC" "$cleaned")
 log "Answer: \"$cleaned\""
 
 # sleep an arbitrary amount between first and second arg
@@ -117,4 +117,4 @@ sleep $tosleep
 
 echo "$cleaned"
 log "Sending answer to ntfy at topic \"$ARGS_NTFY_TOPIC\""
-# curl -s -H "Title: Daily AI Fact" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
+# curl -s -H "Title: Daily Fact Ntfy" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
