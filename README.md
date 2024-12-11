@@ -34,7 +34,7 @@ Daily Ntfy AI Fact is a shell script that:
 
 Basic usage:
 
-```bash
+```zsh
 ./daily_ntfy_ai_fact.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
 ```
 
