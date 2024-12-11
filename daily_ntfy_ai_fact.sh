@@ -85,6 +85,6 @@ cleaned=$(printf "Your daily fact on the topic of '%s':\n%s" "$topic" "$cleaned"
 # echo "$topic"
 # echo "$subtopic"
 # echo "$cleaned"
-phone_notif "Daily Psychiatry Fact" "$cleaned"
+phone_notif "Daily AI Fact" "$cleaned"
 
 
