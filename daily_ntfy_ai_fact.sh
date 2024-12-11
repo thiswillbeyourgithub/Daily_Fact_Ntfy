@@ -4,19 +4,25 @@
 # With a timer to wait a random amount of second and receive the notification at an unpredetermined time.
 # As increasing the temperature was not enough to avoid the LLM sending the same facts over and over again, a seed, date and subtopic prompt is used.
 #
-# usage:
-#   (make sure you have 'uv' installed, as it's used to call ShellArgParser)
-#  ./daily_fact_ntfy.sh --topic "T" --ntfy_topic "N" --min_T X --max_T Y --topic_extra_args "V1" --subtopic_extra_args "V2" --topic_extra_rules "W1" --subtopic_extra_rules "W2" --verbose --strip-thinking
+# Usage: (requires 'uv' for ShellArgParser)
+#   ./daily_ntfy_ai_fact.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
 #
-#  With as args:
-#    - T: the topic you're interested in, required.
-#    - N: the ntfy topic, appended to 'ntfy.sh/', required.
-#    - X: an int, minimum number of second to wait, default to 0.
-#    - Y: an int greater than X, maximum number of second to wait, default to 1.
-#    - V: any extra argument you want to add to the 'llm' command. Be careful to specify the temperature using '-o temperature x' as the default is 2 for the subtopic generation and 1.5 for the fact generation. Note that you can't specify an llm template using -t because it's incompatible with specifying a system prompt, use the extra_rules args instead. V1 applies to the llm call to generate a subtopic and V2 applies to the llm call to generate the faily fact, optional.
-#    - W: any extra rules to tell the LLM. W1 for the subtopic generation and W2 for the fact generation. They will be appended to 'Here are extra rules you need to follow:'. For example 'you must answer in simple spanish', optional.
-#    - --verbose: optional
-#    - --strip-thinking: if set, removes any <thinking>.*</thinking> text. Useful if your llm template makes use of that.
+# Required arguments:
+#   --topic TOPIC          Topic to generate facts about
+#   --ntfy_topic NAME      Ntfy.sh topic name for notifications
+#
+# Optional arguments:
+#   --min_t MIN           Minimum wait time in seconds (default: 0)
+#   --max_t MAX          Maximum wait time in seconds (default: 1)
+#   --topic_extra_args ARGS      Additional arguments for topic LLM call
+#   --subtopic_extra_args ARGS   Additional arguments for subtopic LLM call
+#   --topic_extra_rules RULES    Additional rules for topic generation
+#   --subtopic_extra_rules RULES Additional rules for subtopic generation
+#   --verbose            Enable verbose logging
+#   --strip-thinking    Remove <thinking>...</thinking> tags from output
+#
+# Note: For LLM calls, default temperature is 2.0 for subtopic and 1.5 for fact generation.
+#       Use -o temperature X in extra_args to override these values.
 
 # parse args
 eval $(uvx --quiet ShellArgParser@latest $@)

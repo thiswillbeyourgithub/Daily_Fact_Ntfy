@@ -32,25 +32,25 @@ Daily Ntfy AI Fact is a shell script that:
    ```
 ## Usage
 
-Run the script with required arguments:
+Basic usage:
 
 ```bash
-./daily_ntfy_ai_fact.sh --topic "T" --ntfy_topic "N" [options]
+./daily_ntfy_ai_fact.sh --topic TOPIC --ntfy_topic TOPIC_NAME [options]
 ```
 
 Required arguments:
-- `--topic "T"`: The topic you're interested in
-- `--ntfy_topic "N"`: The ntfy topic (appended to 'ntfy.sh/')
+- `--topic TOPIC`: Main topic to generate facts about
+- `--ntfy_topic TOPIC_NAME`: Ntfy.sh topic name for notifications
 
 Optional arguments:
-- `--min_t X`: Minimum seconds to wait (default: 0)
-- `--max_t Y`: Maximum seconds to wait (default: 1)
-- `--topic_extra_args "V1"`: Extra arguments for subtopic generation LLM call
-- `--subtopic_extra_args "V2"`: Extra arguments for fact generation LLM call
-- `--topic_extra_rules "W1"`: Extra rules for subtopic generation
-- `--subtopic_extra_rules "W2"`: Extra rules for fact generation
+- `--min_t MIN`: Minimum seconds to wait (default: 0)
+- `--max_t MAX`: Maximum seconds to wait (default: 1)
+- `--topic_extra_args ARGS`: Additional arguments for topic LLM call
+- `--subtopic_extra_args ARGS`: Additional arguments for subtopic LLM call
+- `--topic_extra_rules RULES`: Additional rules for topic generation
+- `--subtopic_extra_rules RULES`: Additional rules for subtopic generation
 - `--verbose`: Enable verbose logging
-- `--strip-thinking`: Remove any <thinking>...</thinking> text
+- `--strip-thinking`: Remove <thinking>...</thinking> tags from output
 
 Example:
 ```bash
