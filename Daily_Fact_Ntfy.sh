@@ -24,8 +24,15 @@
 # Note: For LLM calls, default temperature is 2.0 for subtopic and 1.5 for fact generation.
 #       Use -o temperature X in extra_args to override these values.
 
+VERSION=0.1
+
 # parse args
 eval $(uvx --quiet ShellArgParser@latest $@)
+
+if [[ "$ARGS_VERSION" -eq 1 ]]; then
+    echo "Version: $VERSION"
+    exit 0
+fi
 
 function log() {
     if [[ $ARGS_VERBOSE -eq 1 ]]; then
