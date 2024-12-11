@@ -71,6 +71,23 @@ You can customize the behavior of the AI language model by providing additional 
 ./daily_ntfy_ai_fact.sh --topic "Psychiatry" --ntfy_topic "my-notifications" --topic_extra_args "-m gpt-4 -o temperature 0.7"
 ```
 
+More advanced example using Claude, custom rules, and thinking tags:
+```bash
+./daily_ntfy_ai_fact.sh --ntfy_topic "my-notifications" \
+  --topic "Psychiatry research" \
+  --min_t 0 --max_t 5 \
+  --subtopic_extra_args "-m claude -o temperature 2" \
+  --topic_extra_args "-m claude -o temperature 1.5" \
+  --topic_extra_rules "Answer in simple spanish. Start your answer by your internal thoughts in <thinking> tags then answer directly." \
+  --verbose --strip-thinking
+```
+
+This will:
+1. Use Claude instead of the default model
+2. Generate facts in Spanish
+3. Remove the model's thinking process from the output
+4. Send the notification almost immediately (0-5 seconds delay)
+
 Note: Default temperatures are:
 - 2.0 for subtopic generation
 - 1.5 for fact generation
