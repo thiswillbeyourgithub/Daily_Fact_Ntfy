@@ -12,8 +12,8 @@
 #   --ntfy_topic NAME      Ntfy.sh topic name for notifications
 #
 # Optional arguments:
-#   --min_t MIN           Minimum wait time in seconds (default: 0)
-#   --max_t MAX          Maximum wait time in seconds (default: 1)
+#   --min_t MIN           Minimum delay time in seconds (default: 0)
+#   --max_t MAX          Maximum delay time in seconds (default: 1)
 #   --topic_extra_args ARGS      Additional arguments for topic LLM call
 #   --subtopic_extra_args ARGS   Additional arguments for subtopic LLM call
 #   --topic_extra_rules RULES    Additional rules for topic generation
@@ -116,12 +116,9 @@ fi
 cleaned=$(printf "Your daily Fact Ntfy on the topic of '%s':\n%s" "$ARGS_TOPIC" "$cleaned")
 log "Answer: \"$cleaned\""
 
-# sleep an arbitrary amount between first and second arg
-tosleep=$(echo $((RANDOM % ($ARGS_MAX_T-$ARGS_MIN_T+1) + $ARGS_MIN_T)))
-# echo "Sleeping $tosleep seconds"
-log "Sleeping for $tosleep seconds"
-sleep $tosleep
+# delqy an arbitrary amount between first and second arg
+delay=$(($(date +%s)+$((RANDOM % (100-10+1) + 10))))
 
 # echo "$cleaned"
 log "Sending answer to ntfy at topic \"$ARGS_NTFY_TOPIC\""
-curl -s -H "Title: Daily Fact Ntfy" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
+curl -s -H "Title: Daily Fact Ntfy" -H "At: $delay" -d "$cleaned" "ntfy.sh/$ARGS_NTFY_TOPIC"
