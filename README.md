@@ -78,7 +78,7 @@ More advanced example using Claude, custom rules, and thinking tags:
   --min_t 0 --max_t 5 \
   --subtopic_extra_args "-m claude -o temperature 2" \
   --topic_extra_args "-m claude -o temperature 1.5" \
-  --topic_extra_rules "Answer in simple spanish. Start your answer by your internal thoughts in <thinking> tags then answer directly." \
+  --topic_extra_rules "Answer in B1 level spanish from Argentina. Use a style similar to 'Pàgina 12'. For length 2 to 3 paragraphs. Start your answer by your internal thoughts in <thinking> tags then answer directly." \
   --verbose --strip-thinking
 ```
 
