@@ -116,7 +116,7 @@ fi
 cleaned=$(printf "Your daily Fact Ntfy on the topic of '%s':\n%s" "$ARGS_TOPIC" "$cleaned")
 log "Answer: \"$cleaned\""
 
-# delqy an arbitrary amount between first and second arg
+# delay an arbitrary amount between first and second arg
 delay=$(($(date +%s)+$((RANDOM % ($ARGS_MAX_T-$ARGS_MIN_T+1) + $ARGS_MIN_T))))
 
 # echo "$cleaned"
